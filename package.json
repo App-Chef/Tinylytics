@@ -1,0 +1,26 @@
+{
+  "name": "tinylytics",
+  "private": true,
+  "description": "Simple, privacy-friendly analytics for solo developers and small products.",
+  "license": "MIT",
+  "workspaces": [
+    "tracker",
+    "web"
+  ],
+  "engines": {
+    "node": ">=20.9"
+  },
+  "scripts": {
+    "dev": "npm run build -w tracker && npm run dev -w web",
+    "build": "npm run build -w tracker && npm run build -w web",
+    "lint": "npm run lint -w web",
+    "typecheck": "npm run typecheck -w web",
+    "test": "npm run test -w tracker && npm run test -w web",
+    "test:db": "bash supabase/tests/run.sh",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "prettier": "^3.6.0"
+  }
+}

@@ -1,0 +1,5 @@
+node_modules
+.next
+web/public/tracker.js
+supabase
+*.md

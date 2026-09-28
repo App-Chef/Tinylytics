@@ -1,0 +1,17 @@
+{
+  "name": "@tinylytics/tracker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The Tinylytics tracking script.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "jsdom": "^26.0.0",
+    "vitest": "^4.1.11"
+  }
+}

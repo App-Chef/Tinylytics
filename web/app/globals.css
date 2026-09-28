@@ -1,0 +1,249 @@
+@import "tailwindcss";
+
+/*
+ * Tinylytics design tokens.
+ * Refined neobrutalism: warm paper, ink borders, one signal accent,
+ * hard offset shadows reserved for primary actions and overlays.
+ */
+:root {
+  --paper: #f4f2eb;
+  --surface: #fffefa;
+  --sunken: #ebe8df;
+  --ink: #121211;
+  --ink-2: #3d3c38;
+  --muted: #6b6860;
+  --line: #d9d5c9;
+  --line-strong: #121211;
+  --accent: #ff5b14;
+  --accent-wash: rgb(255 91 20 / 0.12);
+  --on-accent: #121211;
+  --danger: #c3261b;
+  --danger-wash: rgb(195 38 27 / 0.08);
+  --good: #1f7a3d;
+  --shadow: #121211;
+  --focus: #1f4fff;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #121210;
+    --surface: #1a1a18;
+    --sunken: #232320;
+    --ink: #efede6;
+    --ink-2: #cfccc3;
+    --muted: #9e9b91;
+    --line: #34332e;
+    --line-strong: #6b6960;
+    --accent: #ff7a3d;
+    --accent-wash: rgb(255 122 61 / 0.16);
+    --on-accent: #121211;
+    --danger: #ff6b5e;
+    --danger-wash: rgb(255 107 94 / 0.1);
+    --good: #5bc97f;
+    --shadow: #000000;
+    --focus: #7d9bff;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-sunken: var(--sunken);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-accent-wash: var(--accent-wash);
+  --color-on-accent: var(--on-accent);
+  --color-danger: var(--danger);
+  --color-danger-wash: var(--danger-wash);
+  --color-good: var(--good);
+  --color-focus: var(--focus);
+
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-instrument), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  --shadow-hard: 3px 3px 0 0 var(--shadow);
+  --shadow-hard-sm: 2px 2px 0 0 var(--shadow);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Numbers in columns line up. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Skeletons pulse gently; reduced motion users get a static block. */
+@keyframes tl-pulse {
+  50% {
+    opacity: 0.55;
+  }
+}
+.skeleton {
+  background: var(--sunken);
+  border-radius: var(--radius-sm);
+  animation: tl-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes tl-rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+.rise {
+  animation: tl-rise 220ms var(--ease-out) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Long-form documentation. */
+.prose-tl {
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+.prose-tl > * + * {
+  margin-top: 1rem;
+}
+.prose-tl h1 {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+.prose-tl h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: 2.5rem;
+  letter-spacing: -0.01em;
+}
+.prose-tl h3 {
+  font-weight: 650;
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-top: 1.75rem;
+}
+.prose-tl a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.prose-tl ul,
+.prose-tl ol {
+  padding-left: 1.25rem;
+}
+.prose-tl ul {
+  list-style: square;
+}
+.prose-tl ol {
+  list-style: decimal;
+}
+.prose-tl li + li {
+  margin-top: 0.35rem;
+}
+.prose-tl li::marker {
+  color: var(--muted);
+}
+.prose-tl code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background: var(--sunken);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+}
+.prose-tl pre {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  background: var(--surface);
+  border: 1.5px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.1rem;
+  overflow-x: auto;
+  color: var(--ink);
+}
+.prose-tl pre code {
+  background: none;
+  padding: 0;
+  font-size: inherit;
+}
+.prose-tl table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.925rem;
+  display: block;
+  overflow-x: auto;
+}
+.prose-tl th,
+.prose-tl td {
+  text-align: left;
+  padding: 0.5rem 0.75rem 0.5rem 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.prose-tl th {
+  color: var(--ink);
+  font-weight: 650;
+  border-bottom: 1.5px solid var(--line-strong);
+}
+.prose-tl blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1rem;
+  color: var(--ink-2);
+}
+.prose-tl hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2rem 0;
+}
+.prose-tl strong {
+  color: var(--ink);
+}

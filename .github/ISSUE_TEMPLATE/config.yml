@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/App-Chef/Tinylytics/security/advisories/new
+    about: Please report security issues privately.
+  - name: Documentation
+    url: https://github.com/App-Chef/Tinylytics/tree/main/docs
+    about: Installation, privacy model, self-hosting and API.

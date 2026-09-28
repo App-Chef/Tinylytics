@@ -1,0 +1,23 @@
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Built tracker (generated from tracker/src by `npm run build -w tracker`)
+web/public/tracker.js
+
+# Supabase local state
+supabase/.branches/
+supabase/.temp/
+
+# OS / editor
+.DS_Store
+*.log
+.vercel
