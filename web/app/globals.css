@@ -25,8 +25,51 @@
   color-scheme: light;
 }
 
+/* Light mode - explicit class to override system preference */
+.light {
+  --paper: #f4f2eb;
+  --surface: #fffefa;
+  --sunken: #ebe8df;
+  --ink: #121211;
+  --ink-2: #3d3c38;
+  --muted: #6b6860;
+  --line: #d9d5c9;
+  --line-strong: #121211;
+  --accent: #0066ff;
+  --accent-wash: rgb(0 102 255 / 0.12);
+  --on-accent: #ffffff;
+  --danger: #c3261b;
+  --danger-wash: rgb(195 38 27 / 0.08);
+  --good: #1f7a3d;
+  --shadow: #121211;
+  --focus: #1f4fff;
+  color-scheme: light;
+}
+
+/* Dark mode - class-based for manual control */
+.dark {
+  --paper: #121210;
+  --surface: #1a1a18;
+  --sunken: #232320;
+  --ink: #efede6;
+  --ink-2: #cfccc3;
+  --muted: #9e9b91;
+  --line: #34332e;
+  --line-strong: #6b6960;
+  --accent: #4d9fff;
+  --accent-wash: rgb(77 159 255 / 0.16);
+  --on-accent: #121211;
+  --danger: #ff6b5e;
+  --danger-wash: rgb(255 107 94 / 0.1);
+  --good: #5bc97f;
+  --shadow: #000000;
+  --focus: #7d9bff;
+  color-scheme: dark;
+}
+
+/* Fallback: respect system preference for users without JS */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.dark):not(.light) {
     --paper: #121210;
     --surface: #1a1a18;
     --sunken: #232320;
