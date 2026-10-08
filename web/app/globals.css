@@ -14,9 +14,9 @@
   --muted: #6b6860;
   --line: #d9d5c9;
   --line-strong: #121211;
-  --accent: #ff5b14;
-  --accent-wash: rgb(255 91 20 / 0.12);
-  --on-accent: #121211;
+  --accent: #0066ff;
+  --accent-wash: rgb(0 102 255 / 0.12);
+  --on-accent: #ffffff;
   --danger: #c3261b;
   --danger-wash: rgb(195 38 27 / 0.08);
   --good: #1f7a3d;
@@ -35,8 +35,8 @@
     --muted: #9e9b91;
     --line: #34332e;
     --line-strong: #6b6960;
-    --accent: #ff7a3d;
-    --accent-wash: rgb(255 122 61 / 0.16);
+    --accent: #4d9fff;
+    --accent-wash: rgb(77 159 255 / 0.16);
     --on-accent: #121211;
     --danger: #ff6b5e;
     --danger-wash: rgb(255 107 94 / 0.1);
