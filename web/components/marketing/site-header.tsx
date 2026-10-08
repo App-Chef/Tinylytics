@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { ButtonLink } from "@/components/ui/button";
+import { ThemeToggleIcon } from "@/components/theme-toggle";
 import { repositoryUrl } from "@/lib/env";
 
 export function SiteHeader() {
@@ -27,6 +28,7 @@ export function SiteHeader() {
           >
             GitHub
           </a>
+          <ThemeToggleIcon className="hidden sm:block" />
           <Link
             href="/login"
             className="rounded-md px-3 py-2 text-sm font-medium text-ink-2 transition-colors hover:text-ink"

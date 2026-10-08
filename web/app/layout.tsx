@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Instrument_Sans, JetBrains_Mono } from "next/font/google";
 import { siteUrl } from "@/lib/env";
+import { ThemeProvider } from "@/lib/theme";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({ subsets: ["latin"], variable: "--font-bricolage", display: "swap" });
@@ -128,7 +129,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   };
 
   return (
-    <html lang="en" className={`${bricolage.variable} ${instrument.variable} ${jetbrains.variable}`}>
+    <html lang="en" className={`${bricolage.variable} ${instrument.variable} ${jetbrains.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -139,13 +140,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       {/* Browser extensions (e.g. Grammarly) add attributes to <body> before React
           hydrates. This only silences attribute mismatches on <body> itself. */}
       <body className="min-h-dvh antialiased" suppressHydrationWarning>
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:border-[1.5px] focus:border-ink focus:bg-surface focus:px-3 focus:py-2 focus:text-sm focus:font-semibold"
-        >
-          Skip to content
-        </a>
-        {children}
+        <ThemeProvider>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:border-[1.5px] focus:border-ink focus:bg-surface focus:px-3 focus:py-2 focus:text-sm focus:font-semibold"
+          >
+            Skip to content
+          </a>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
