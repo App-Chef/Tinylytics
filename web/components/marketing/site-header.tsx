@@ -15,6 +15,12 @@ export function SiteHeader() {
           >
             Docs
           </Link>
+          <Link
+            href="/faq"
+            className="hidden rounded-md px-3 py-2 text-sm font-medium text-ink-2 transition-colors hover:text-ink lg:block"
+          >
+            FAQ
+          </Link>
           <a
             href={repositoryUrl}
             className="hidden rounded-md px-3 py-2 text-sm font-medium text-ink-2 transition-colors hover:text-ink sm:block"
@@ -49,6 +55,16 @@ export function SiteFooter() {
             <li>
               <Link href="/docs" className="hover:text-ink">
                 Documentation
+              </Link>
+            </li>
+            <li>
+              <Link href="/faq" className="hover:text-ink">
+                FAQ
+              </Link>
+            </li>
+            <li>
+              <Link href="/alternatives" className="hover:text-ink">
+                Comparisons
               </Link>
             </li>
             <li>

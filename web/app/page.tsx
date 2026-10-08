@@ -53,8 +53,110 @@ const FEATURES = [
 export default function Home() {
   const size = trackerSize();
 
+  // Structured data for Answer Engine Optimization (AEO)
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is Tinylytics?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Tinylytics is a simple, privacy-friendly analytics platform for solo developers and small products. It tracks website visitors, page views, and traffic sources without using cookies or storing personal data.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is Tinylytics GDPR compliant?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, Tinylytics is GDPR compliant. It doesn't use cookies, doesn't store personal data, and doesn't store raw IP addresses. Visitors are identified using a hashed, anonymized approach that can't be reversed or linked across days.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How small is the Tinylytics tracking script?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `The Tinylytics tracking script is approximately ${size} gzipped with zero dependencies. It loads with defer, never blocks page rendering, and fails silently if unavailable.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I self-host Tinylytics?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, Tinylytics is open source (MIT licensed) and fully self-hostable. You can run it on your own Supabase project and any Next.js hosting platform like Vercel or a VPS.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What analytics metrics does Tinylytics track?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Tinylytics tracks essential metrics including page views, unique visitors, traffic sources (referrers), countries, devices (desktop/mobile/tablet), browsers, and operating systems. It focuses on actionable insights without overwhelming you with unnecessary data.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Does Tinylytics work with single-page applications?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, Tinylytics supports single-page applications. It automatically tracks History API navigation and drops duplicate page views.",
+        },
+      },
+    ],
+  };
+
+  const howToJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Install Tinylytics Analytics on Your Website",
+    description: "Learn how to add privacy-friendly analytics to your website in seconds with Tinylytics",
+    step: [
+      {
+        "@type": "HowToStep",
+        name: "Sign up for Tinylytics",
+        text: "Create a free Tinylytics account",
+        url: `${siteUrl}/signup`,
+      },
+      {
+        "@type": "HowToStep",
+        name: "Get your site ID",
+        text: "After signing up, you'll receive a unique site ID for your website",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Add the tracking script",
+        text: `Add the Tinylytics tracking script to your website's <head> section before the closing </head> tag`,
+        itemListElement: [
+          {
+            "@type": "HowToDirection",
+            text: `<script defer src="${siteUrl}/tracker.js" data-site="YOUR_SITE_ID"></script>`,
+          },
+        ],
+      },
+      {
+        "@type": "HowToStep",
+        name: "Start tracking",
+        text: "Your analytics dashboard will start showing data as soon as visitors arrive on your site",
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        suppressHydrationWarning
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+        suppressHydrationWarning
+      />
       <SiteHeader />
       <main id="main">
         {/* Hero */}
