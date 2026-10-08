@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Suspense } from "react";
 import { Logo } from "@/components/logo";
+import { ThemeToggle } from "@/components/theme-toggle";
 import type { Site } from "@/types/database";
 import { SidebarNav, TabNav, type NavItem } from "./nav";
 import { SiteSelector } from "./site-selector";
@@ -42,6 +43,7 @@ export function DashboardShell({
           </div>
         ) : null}
         <div className="mt-auto space-y-0.5 border-t border-line pt-4 text-sm">
+          <ThemeToggle />
           <Link
             href="/docs"
             className="flex h-9 items-center rounded-md px-3 text-ink-2 transition-colors duration-150 hover:bg-sunken hover:text-ink"

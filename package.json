@@ -11,8 +11,8 @@
     "node": ">=20.9"
   },
   "scripts": {
-    "dev": "npm run build -w tracker && npm run dev -w web",
-    "build": "npm run build -w tracker && npm run build -w web",
+    "dev": "node init && npm run build -w tracker && npm run dev -w web",
+    "build": "node init && npm run build -w tracker && npm run build -w web",
     "lint": "npm run lint -w web",
     "typecheck": "npm run typecheck -w web",
     "test": "npm run test -w tracker && npm run test -w web",

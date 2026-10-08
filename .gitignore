@@ -6,8 +6,6 @@ coverage/
 next-env.d.ts
 
 # Environment
-.env
-.env.*
 !.env.example
 
 # Built tracker (generated from tracker/src by `npm run build -w tracker`)
@@ -21,3 +19,4 @@ supabase/.temp/
 .DS_Store
 *.log
 .vercel
+config.bat
