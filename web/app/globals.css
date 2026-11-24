@@ -124,6 +124,27 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+  scrollbar-color: var(--muted) var(--paper);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border: 2px solid var(--paper);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-2);
 }
 
 body {
