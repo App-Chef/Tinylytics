@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { gzipSync } from "node:zlib";
 import Link from "next/link";
 import { DashboardPreview } from "@/components/marketing/dashboard-preview";
+import { ScrollReveal } from "@/components/marketing/scroll-reveal";
 import { SiteFooter, SiteHeader } from "@/components/marketing/site-header";
 import { ButtonLink, buttonClass } from "@/components/ui/button";
 import { repositoryUrl, siteUrl } from "@/lib/env";
@@ -15,6 +16,10 @@ function trackerSize() {
   } catch {
     return "~1 KB";
   }
+}
+
+function serializeJsonLd(data: object) {
+  return JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
 const NOISE = [
@@ -149,14 +154,15 @@ export default function Home() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
         suppressHydrationWarning
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(howToJsonLd) }}
         suppressHydrationWarning
       />
+      <ScrollReveal />
       <SiteHeader />
       <main id="main">
         {/* Hero */}
@@ -191,7 +197,7 @@ export default function Home() {
               See your traffic, pages, referrers, and audience without turning analytics into another full-time job.
             </p>
           </div>
-          <div className="mt-16 sm:mt-20">
+          <div className="scroll-reveal mt-16 sm:mt-20">
             <DashboardPreview />
           </div>
         </section>
@@ -199,7 +205,7 @@ export default function Home() {
         {/* Problem */}
         <section aria-labelledby="problem-title" className="border-y-[1.5px] border-line-strong bg-surface">
           <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:gap-16">
-            <div>
+            <div className="scroll-reveal">
               <h2
                 id="problem-title"
                 className="font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl"
@@ -215,7 +221,7 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="lg:pt-2">
+            <div className="scroll-reveal lg:pt-2">
               <p className="text-sm font-semibold uppercase tracking-wider text-muted">What Tinylytics answers</p>
               <ol className="mt-4 divide-y divide-line border-y-[1.5px] border-line-strong">
                 {QUESTIONS.map((q, i) => (
@@ -234,12 +240,15 @@ export default function Home() {
 
         {/* Features */}
         <section aria-labelledby="features-title" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-          <h2 id="features-title" className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 id="features-title" className="scroll-reveal font-display text-3xl font-bold tracking-tight sm:text-4xl">
             Everything on one page.
           </h2>
           <div className="mt-10 grid overflow-hidden rounded-lg border-[1.5px] border-line-strong sm:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map((f) => (
-              <div key={f.title} className="-mb-px -mr-px border-b border-r border-line bg-surface p-6">
+              <div
+                key={f.title}
+                className="scroll-reveal -mb-px -mr-px border-b border-r border-line bg-surface p-6"
+              >
                 <h3 className="font-display text-lg font-bold">{f.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-ink-2">{f.body}</p>
               </div>
@@ -253,7 +262,7 @@ export default function Home() {
           className="border-y-[1.5px] border-line-strong bg-[#121211] text-[#f4f2eb]"
         >
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[1fr_1.1fr]">
-            <div>
+            <div className="scroll-reveal">
               <h2 id="tracker-title" className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
                 A tracker you&apos;ll forget is there.
               </h2>
@@ -277,7 +286,7 @@ export default function Home() {
                 </div>
               </dl>
             </div>
-            <pre className="overflow-x-auto rounded-lg border-[1.5px] border-white/25 bg-white/5 p-5 font-mono text-[13px] leading-relaxed sm:text-sm">
+            <pre className="scroll-reveal overflow-x-auto rounded-lg border-[1.5px] border-white/25 bg-white/5 p-5 font-mono text-[13px] leading-relaxed sm:text-sm">
               <code>
                 <span className="opacity-50">{"<!-- before </head> -->"}</span>
                 {"\n"}
@@ -292,7 +301,7 @@ export default function Home() {
         {/* Open source */}
         <section aria-labelledby="oss-title" className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
           <div className="grid gap-10 lg:grid-cols-2">
-            <div>
+            <div className="scroll-reveal">
               <h2 id="oss-title" className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
                 Open source. Yours to run.
               </h2>
@@ -301,7 +310,7 @@ export default function Home() {
                 on your own Supabase project and Next.js host.
               </p>
             </div>
-            <ul className="space-y-4 self-center">
+            <ul className="scroll-reveal space-y-4 self-center">
               {[
                 ["Plain PostgreSQL", "Events and daily rollups live in tables you can query yourself."],
                 ["Row Level Security", "Every read is scoped to the signed-in owner, enforced by the database."],
@@ -316,7 +325,7 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="scroll-reveal mt-8 flex flex-wrap gap-3">
             <Link href="/docs/self-hosting" className={buttonClass("secondary", "md")}>
               Self-hosting guide
             </Link>
@@ -328,7 +337,7 @@ export default function Home() {
 
         {/* CTA */}
         <section aria-labelledby="cta-title" className="border-t-[1.5px] border-line-strong">
-          <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-20 sm:px-6 md:flex-row md:items-center md:justify-between">
+          <div className="scroll-reveal mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-20 sm:px-6 md:flex-row md:items-center md:justify-between">
             <h2 id="cta-title" className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
               See what&apos;s happening.
             </h2>

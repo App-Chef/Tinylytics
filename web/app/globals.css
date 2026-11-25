@@ -191,6 +191,22 @@ body {
   animation: tl-rise 220ms var(--ease-out) both;
 }
 
+.scroll-reveal {
+  transition:
+    opacity 520ms var(--ease-out),
+    transform 520ms var(--ease-out);
+}
+
+html.scroll-reveal-ready .scroll-reveal:not(.is-visible) {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+html.scroll-reveal-ready .scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -199,6 +215,12 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  html.scroll-reveal-ready .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
