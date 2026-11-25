@@ -135,12 +135,6 @@ export default function Home() {
         "@type": "HowToStep",
         name: "Add the tracking script",
         text: `Add the Tinylytics tracking script to your website's <head> section before the closing </head> tag`,
-        itemListElement: [
-          {
-            "@type": "HowToDirection",
-            text: `<script defer src="${siteUrl}/tracker.js" data-site="YOUR_SITE_ID"></script>`,
-          },
-        ],
       },
       {
         "@type": "HowToStep",
